@@ -1,0 +1,19 @@
+<div class="task">
+  <div class="header">
+      <div>
+        <!-- Render title here... -->
+        {{ task.title }}
+      </div>
+      <select name="text" (change)="onChange($event)">
+          <option *ngFor="let statusType of statusTypes" value="{{ statusType }}" [selected]="statusType === task.status">
+              {{ statusType }}
+          </option>
+        </select>
+      <!-- Markup for dropdown menu here... -->
+  </div>
+  <hr>
+  <div class="body">
+      <!-- Render description here... -->
+     {{ task.description }}
+  </div>
+</div>

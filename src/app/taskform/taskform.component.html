@@ -1,0 +1,48 @@
+<!-- Add event binding for form submit... -->
+<form [formGroup]="myForm" (ngSubmit)="save()"
+  style="margin-bottom: 10px"
+  >
+
+  <!-- Apply ngModel to this input... -->
+<!--   <input [(ngModel)]="obj.title" name="title"
+      class="input"
+      type="text"
+      placeholder="title"
+      formControlName="title"
+  /> -->
+  <input name="title"
+      class="input"
+      type="text"
+      placeholder="title"
+      formControlName="title"
+    />
+  <!-- Markup for error messages... -->
+  <div *ngIf="myForm.controls['title'].invalid && (myForm.controls['title'].dirty ||
+   myForm.controls['title'].touched || myForm.controls['description'].dirty || myForm.controls['description'].touched)" class="error">
+    <div *ngIf="myForm.controls['title'].errors.required">
+            Title is required.
+        </div>
+        <div *ngIf="myForm.controls['title'].errors.minlength">
+            Title must be at least 3 characters long.
+        </div>
+    </div>
+
+  <!-- Apply ngModel to this input... -->
+<!--   <input [(ngModel)]="obj.description" name="description"
+      class="input"
+      type="text"
+      placeholder="description"
+  /> -->
+  <input name="description"
+  class="input"
+  type="text"
+  placeholder="description"
+  formControlName="description"
+/>
+
+  <!-- Disable button if form is invalid. -->
+<!-- <button type="submit" (click)="save($event)"> -->
+        <button type="submit" [disabled]="!myForm.valid">
+      Save
+  </button>
+</form>
